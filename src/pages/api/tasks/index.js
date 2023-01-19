@@ -1,5 +1,5 @@
-import Tasks from "../../../models/Tasks"
-import { dbConnect } from "../../../utils/mongoose"
+import Tasks from "models/Tasks"
+import { dbConnect } from "utils/mongoose"
 dbConnect()
 
 export default async function handler (req, res) {
