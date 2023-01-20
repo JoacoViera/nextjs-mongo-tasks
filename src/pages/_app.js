@@ -1,3 +1,4 @@
+import "semantic-ui/dist/semantic.min.css"
 import "../styles/globals.css"
 
 function MyApp ({ Component, pageProps }) {
