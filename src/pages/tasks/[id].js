@@ -1,7 +1,5 @@
-import React from "react"
+import React from "react";
 
-export default function TaskDetail () {
-  return (
-    <div>Task Detail</div>
-  )
+export default function TaskDetail() {
+  return <div>Task Detail</div>;
 }

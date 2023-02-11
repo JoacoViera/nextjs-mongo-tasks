@@ -1,4 +1,4 @@
-import { Navbar } from "./Navbar"
+import { Navbar } from "./Navbar";
 
 export const Layout = (props) => {
   return (
@@ -6,5 +6,5 @@ export const Layout = (props) => {
       <Navbar />
       {props.children}
     </>
-  )
-}
+  );
+};
