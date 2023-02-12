@@ -29,7 +29,7 @@ export default function HomePage({ tasks }) {
     );
   }
   return (
-    <Container>
+    <Container style={{ padding: "20px" }}>
       <Card.Group itemsPerRow={4}>
         {tasks.map((task) => (
           <Card key={task._id}>
