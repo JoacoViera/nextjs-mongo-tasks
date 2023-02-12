@@ -3,7 +3,7 @@ import { Button, Card, Container, Grid } from "semantic-ui-react";
 
 export default function HomePage({ tasks }) {
   console.log("here", tasks);
-  if (tasks.length !== 0) {
+  if (tasks.length === 0) {
     return (
       <Grid
         centered
