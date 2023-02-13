@@ -1,7 +1,7 @@
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { Grid, Button, Confirm, Loader } from "semantic-ui-react";
+import { Grid, Button, Confirm } from "semantic-ui-react";
 
 export default function TaskDetail({ task, error }) {
   const [confirm, setConfirm] = useState(false);
