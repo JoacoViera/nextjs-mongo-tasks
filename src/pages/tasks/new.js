@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 
 export default function TaskFormPage() {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
   const [newTask, setNewTask] = useState({ title: "", description: "" });
   const [errors, setErros] = useState({});
   const router = useRouter();
