@@ -59,7 +59,7 @@ export default function HomePage({ tasks }) {
 }
 
 export async function getServerSideProps(context) {
-  const data = await fetch(`${process.env.BACKEND_URL}/tasks`);
+  const data = await fetch(`http://localhost:3000/api/tasks`);
   const tasks = await data.json();
 
   return {

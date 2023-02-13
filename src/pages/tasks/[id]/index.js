@@ -14,7 +14,7 @@ export default function TaskDetail({ task, error }) {
   const deleteTask = async () => {
     console.log("meow", router.query.id);
     try {
-      await fetch(`${process.env.BACKEND_URL}/tasks/${router.query.id}`, {
+      await fetch(`http://localhost:3000/api/tasks/${router.query.id}`, {
         method: "DELETE",
       });
       setIsDeleting(false);
@@ -65,7 +65,7 @@ export default function TaskDetail({ task, error }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const res = await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`);
+  const res = await fetch(`http://localhost:3000/api/tasks/${query.id}`);
   if (res.status === 200) {
     const task = await res.json();
     console.log("task", task);
