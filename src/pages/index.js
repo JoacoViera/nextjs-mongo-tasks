@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
 import { Button, Card, Container, Grid } from "semantic-ui-react";
+
 export default function HomePage({ tasks }) {
   const router = useRouter();
   if (tasks.length === 0) {
@@ -37,7 +39,7 @@ export default function HomePage({ tasks }) {
           <Card key={task._id}>
             <Card.Content>
               <Card.Header>{task.title}</Card.Header>
-              <p>{task.description}</p>
+              <p style={{ color: "gray" }}>{task.description}</p>
             </Card.Content>
             <Card.Content extra>
               <Button primary onClick={() => router.push(`/tasks/${task._id}`)}>
@@ -58,12 +60,11 @@ export default function HomePage({ tasks }) {
 }
 
 export async function getServerSideProps(context) {
-  const data = await fetch(`${process.env.BACKEND_URL}/tasks`);
-  const tasks = await data.json();
+  const { data } = await axios.get(`${process.env.BACKEND_URL}/tasks`);
 
   return {
     props: {
-      tasks,
+      tasks: data,
     },
   };
 }

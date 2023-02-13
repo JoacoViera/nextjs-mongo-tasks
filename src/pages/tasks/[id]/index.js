@@ -1,3 +1,5 @@
+import axios from "axios";
+import { BACKEND_URL } from "config";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -12,9 +14,8 @@ export default function TaskDetail({ task, error }) {
   const close = () => setConfirm(false);
 
   const deleteTask = async () => {
-    console.log("meow", router.query.id);
     try {
-      await fetch(`${process.env.BACKEND_URL}/tasks/${router.query.id}`, {
+      await axios.delete(`${BACKEND_URL}/tasks/${router.query.id}`, {
         method: "DELETE",
       });
       setIsDeleting(false);
@@ -46,7 +47,12 @@ export default function TaskDetail({ task, error }) {
           <h1>{task.title}</h1>
           <p>{task.description}</p>
           <div>
-            <Button color="red" onClick={open} loading={isDeleting}>
+            <Button
+              color="red"
+              onClick={open}
+              loading={isDeleting}
+              style={{ marginTop: "20px" }}
+            >
               Delete
             </Button>
           </div>
@@ -65,13 +71,11 @@ export default function TaskDetail({ task, error }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const res = await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`);
-  if (res.status === 200) {
-    const task = await res.json();
-    console.log("task", task);
+  const { data, status } = await axios(`${BACKEND_URL}/tasks/${query.id}`);
+  if (status === 200) {
     return {
       props: {
-        task,
+        task: data,
       },
     };
   }
@@ -79,7 +83,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       error: {
-        statusCode: res.status,
+        statusCode: status,
         statusText: "Invalid id",
       },
     },

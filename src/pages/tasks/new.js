@@ -1,23 +1,29 @@
+import axios from "axios";
+import { BACKEND_URL } from "config";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { Button, Form, Grid } from "semantic-ui-react";
+import { Button, Form, Grid, Loader } from "semantic-ui-react";
 
 export default function TaskFormPage() {
   const { query } = useRouter();
+  const [loading, setLoading] = useState(true);
   const [newTask, setNewTask] = useState({ title: "", description: "" });
   const [errors, setErrors] = useState({});
   const router = useRouter();
 
   useEffect(() => {
+    setLoading(true);
     if (query.id) {
       getTask();
+    } else {
+      setLoading(false);
     }
   }, []);
 
   const getTask = async () => {
-    const res = await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`);
-    const data = await res.json();
+    const { data } = await axios.get(`${BACKEND_URL}/tasks/${query.id}`);
     setNewTask({ title: data.title, description: data.description });
+    setLoading(false);
   };
 
   const validateForm = () => {
@@ -36,10 +42,12 @@ export default function TaskFormPage() {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const errors = validateForm();
 
     if (Object.keys(errors).length > 0) {
+      setLoading(false);
       return setErrors(errors);
     }
 
@@ -54,12 +62,9 @@ export default function TaskFormPage() {
 
   const createTaks = async () => {
     try {
-      await fetch(`${process.env.BACKEND_URL}/tasks`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(newTask),
+      await axios.post(`${BACKEND_URL}/tasks`, {
+        title: newTask.title,
+        description: newTask.description,
       });
     } catch (error) {
       console.log("error", error);
@@ -68,17 +73,17 @@ export default function TaskFormPage() {
 
   const updateTask = async () => {
     try {
-      await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(newTask),
+      await axios.put(`${BACKEND_URL}/tasks/${query.id}`, {
+        title: newTask.title,
+        description: newTask.description,
       });
     } catch (error) {
       console.log("error", error);
     }
+    setLoading(false);
   };
+
+  if (loading) return <Loader active size="massive" />;
 
   return (
     <Grid
