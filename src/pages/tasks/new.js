@@ -15,7 +15,7 @@ export default function TaskFormPage() {
   }, []);
 
   const getTask = async () => {
-    const res = await fetch(`http://localhost:3000/api/tasks/${query.id}`);
+    const res = await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`);
     const data = await res.json();
     setNewTask({ title: data.title, description: data.description });
   };
@@ -54,7 +54,7 @@ export default function TaskFormPage() {
 
   const createTaks = async () => {
     try {
-      await fetch("http://localhost:3000/api/tasks", {
+      await fetch(`${process.env.BACKEND_URL}/tasks`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -68,7 +68,7 @@ export default function TaskFormPage() {
 
   const updateTask = async () => {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${query.id}`, {
+      await fetch(`${process.env.BACKEND_URL}/tasks/${query.id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
