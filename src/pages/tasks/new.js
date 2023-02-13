@@ -5,7 +5,7 @@ import { Button, Form, Grid } from "semantic-ui-react";
 export default function TaskFormPage() {
   const { query } = useRouter();
   const [newTask, setNewTask] = useState({ title: "", description: "" });
-  const [errors, setErros] = useState({});
+  const [errors, setErrors] = useState({});
   const router = useRouter();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function TaskFormPage() {
     const errors = validateForm();
 
     if (Object.keys(errors).length > 0) {
-      return setErros(errors);
+      return setErrors(errors);
     }
 
     if (query.id) {

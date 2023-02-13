@@ -24,7 +24,9 @@ export default function HomePage({ tasks }) {
           </Grid.Column>
         </Grid.Row>
         <div>
-          <Button primary>Create a task</Button>
+          <Button primary onClick={() => router.push("/tasks/new")}>
+            Create a task
+          </Button>
         </div>
       </Grid>
     );
