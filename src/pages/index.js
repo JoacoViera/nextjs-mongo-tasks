@@ -1,8 +1,9 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { Button, Card, Container, Grid } from "semantic-ui-react";
 
 export default function HomePage({ tasks }) {
-  console.log("here", tasks);
+  const router = useRouter();
   if (tasks.length === 0) {
     return (
       <Grid
@@ -38,7 +39,9 @@ export default function HomePage({ tasks }) {
               <p>{task.description}</p>
             </Card.Content>
             <Card.Content extra>
-              <Button primary>View</Button>
+              <Button primary onClick={() => router.push(`/tasks/${task._id}`)}>
+                View
+              </Button>
               <Button secondary>Edit</Button>
             </Card.Content>
           </Card>
