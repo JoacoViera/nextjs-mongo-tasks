@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { Button, Card, Container, Grid } from "semantic-ui-react";
-
 export default function HomePage({ tasks }) {
   const router = useRouter();
   if (tasks.length === 0) {
@@ -59,7 +58,7 @@ export default function HomePage({ tasks }) {
 }
 
 export async function getServerSideProps(context) {
-  const data = await fetch(`http://localhost:3000/api/tasks`);
+  const data = await fetch(`${process.env.BACKEND_URL}/tasks`);
   const tasks = await data.json();
 
   return {
