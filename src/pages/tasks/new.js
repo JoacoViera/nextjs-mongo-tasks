@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BACKEND_URL } from "config";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { Button, Form, Grid, Loader } from "semantic-ui-react";
@@ -92,6 +93,9 @@ export default function TaskFormPage() {
       columns={3}
       style={{ height: "80vh" }}
     >
+      <Head>
+        <title>{query.id ? "Update Task" : "Create Task"}</title>
+      </Head>
       <Grid.Row>
         <Grid.Column textAlign="center">
           <h1>{query.id ? "Update Task" : "Create Task"}</h1>

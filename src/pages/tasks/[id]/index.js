@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BACKEND_URL } from "config";
 import Error from "next/error";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Grid, Button, Confirm } from "semantic-ui-react";
@@ -42,6 +43,9 @@ export default function TaskDetail({ task, error }) {
         height: "80vh",
       }}
     >
+      <Head>
+        <title>Task - {task.title}</title>
+      </Head>
       <Grid.Row>
         <Grid.Column textAlign="center">
           <h1>{task.title}</h1>
