@@ -1,21 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Manager CRUD
 
-## Getting Started
+Task Manager CRUD is a simple project to manage tasks, it was made with NextJS, TailwindCSS and MongoDB.
+The deployment is made with the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-First, run the development server:
+## Stack
+
+- NextJS
+- Semantic UI
+- MongoDB
+- pnpm
+
+### Installing
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/JoacoViera/nextjs-mongo-tasks.git
+cd nextjs-mongo-tasks
+pnpm install
 pnpm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
