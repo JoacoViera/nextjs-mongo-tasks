@@ -8,7 +8,7 @@ export const Navbar = () => {
   return (
     <Menu inverted borderless attached>
       <Container>
-        <Menu.Item>
+        <Menu.Item className="hover-icon">
           <Link href={"/"}>
             <img src="./favicon.ico"></img>
           </Link>

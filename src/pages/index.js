@@ -33,16 +33,21 @@ export default function HomePage({ tasks }) {
     );
   }
   return (
-    <Container style={{ padding: "20px" }}>
+    <Container className="main-container">
       <Card.Group itemsPerRow={4}>
         {tasks.map((task) => (
           <Card key={task._id}>
             <Card.Content>
-              <Card.Header>{task.title}</Card.Header>
-              <p style={{ color: "gray" }}>{task.description}</p>
+              <Card.Header style={{ fontWeight: "bold" }}>
+                {task.title}
+              </Card.Header>
+              <p style={{ color: "black" }}>{task.description}</p>
             </Card.Content>
-            <Card.Content extra>
-              <Button primary onClick={() => router.push(`/tasks/${task._id}`)}>
+            <Card.Content extra className="buttons-container">
+              <Button
+                className="ui teal button"
+                onClick={() => router.push(`/tasks/${task._id}`)}
+              >
                 View
               </Button>
               <Button

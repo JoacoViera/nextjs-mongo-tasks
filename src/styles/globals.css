@@ -24,3 +24,18 @@ a {
     background: black;
   }
 }
+
+.hover-icon {
+  cursor: pointer;
+}
+
+.main-container {
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
